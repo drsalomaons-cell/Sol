@@ -13,8 +13,12 @@ jobs:
           channel: stable
       - name: Create Flutter project
         run: flutter create . --platforms=android --project-name sol
-      - name: Install Sol UI
-        run: cp lib/sol_main.dart lib/main.dart
+      - name: Verify Sol source
+        run: |
+          test -s lib/main.dart
+          grep -q "class SolApp" lib/main.dart
+          grep -q "class SolHome" lib/main.dart
+          echo "Sol source OK"
       - name: Build APK
         run: flutter build apk --release
       - uses: actions/upload-artifact@v4
