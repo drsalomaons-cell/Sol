@@ -1,0 +1,2 @@
+Build Sol APK
+Local build verified: 46.1 MB
